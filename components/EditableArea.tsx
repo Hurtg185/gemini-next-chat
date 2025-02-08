@@ -205,18 +205,23 @@ function EditableArea({ content: originalContent, isEditing, onChange, onCancel 
       })
       await textStream(readableStream, setContent)
     } catch (err) {
-      console.error(err)
-    } finally {
-      setLoadingAction('')
-    }
-  }, [content])
+        console.error(err)
+      } finally {
+        setLoadingAction('')
+      }
+    }, [content])
 
-  useEffect(() => {
-    if (isEditing && contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight + 14)
-      contentRef.current.focus()
-    }
-  }, [isEditing])
+    useEffect(() => {
+        if (isEditing) {
+            if (contentRef.current) {
+                setContentHeight(contentRef.current.scrollHeight + 14);
+                contentRef.current.focus();
+            } else {
+                // 如果 contentRef.current 为 null，则直接设置 contentHeight 的值为 160
+                setContentHeight(160);
+            }
+        }
+    }, [isEditing]);
 
   if (!isEditing) return null
 
