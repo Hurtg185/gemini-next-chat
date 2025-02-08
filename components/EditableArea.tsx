@@ -54,7 +54,7 @@ function EditableArea({ content: originalContent, isEditing, onChange, onCancel 
   const isMobile = useIsMobile(450)
   const contentRef = useRef<HTMLTextAreaElement>(null)
   const [content, setContent] = useState<string>(originalContent)
-  const [contentHeight, setContentHeight] = useState<number>(80)
+  const [contentHeight, setContentHeight] = useState<number>(160) // 修改初始高度为 160
   const [loadingAction, setLoadingAction] = useState<string>('')
   const [prompt, setPrompt] = useState<string>('')
 
@@ -226,7 +226,7 @@ function EditableArea({ content: originalContent, isEditing, onChange, onCancel 
         ref={contentRef}
         value={content}
         onChange={(ev) => setContent(ev.target.value)}
-        className="chat-content max-h-[320px] resize-none"
+        className="chat-content max-h-[320px] resize-none min-h-[160px]" // 修改 min-h-[80px] 为 min-h-[160px]
         style={{ height: `${contentHeight}px` }}
       />
       <div className="mb-1 mt-2 flex justify-between">
