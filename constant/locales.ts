@@ -1,5 +1,5 @@
 export default {
-  'ar-SA': 'العربية',
+  'my': 'မြန်မာ',
   'de-DE': 'Deutsch',
   'en-US': 'English',
   'es-ES': 'Español',
